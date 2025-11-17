@@ -1,0 +1,149 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/singleview.css" />
+    <title>Case</title>
+  </head>
+  <body>
+    <Header />
+
+    <main class="casepage">
+      <h2>Our work with LOOPECO.</h2>
+      <div class="casehero"><img src="/src/assets/casehero.png" alt="LOOPECO." /></div>
+
+      <section class="textandimg">
+        <div class="text">
+          <h3>Introduction</h3>
+          <p>LOOPECO approached TÓKI with a clear goal - to create packaging that would reflect their commitment to sustainable beauty while staying true to their minimalist design philosophy.</p>
+          <p>As a skincare brand built around responsibility and transparency, they wanted their packaging to speak the same language as their products: clean, honest, and conscious.</p>
+        </div>
+        <div class="image">
+          <img src="/src/assets/b1.png" alt="LOOPECO bottle" />
+        </div>
+      </section>
+
+      <section class="imgandtext">
+        <div class="image">
+          <img src="/src/assets/b2.png" alt="LOOPECO boxes" />
+        </div>
+        <div class="text">
+          <h3>The challenge</h3>
+          <p>Most skincare packaging is produced new - designed to look fresh, polished, and untouched. But this approach often leads to excessive waste and overproduction.</p>
+          <p>LOOPECO wanted to break that pattern. Their vision was to use existing packaging materials that had already served a purpose elsewhere and give them a new life under the LOOPECO brand.</p>
+        </div>
+      </section>
+
+      <section class="col">
+        <div class="process">
+          <h3>The Process</h3>
+          <p>Our work began with material exploration. We collected and tested various types of second-hand boxes and labels from local suppliers - each with its own history and imperfections.</p>
+          <p>From there, we focused on creating consistency: sanding, refinishing and rebranding each surface to ensure the packaging felt cohesive while still retaining its natural character.</p>
+        </div>
+
+        <div class="result">
+          <h3>The Result</h3>
+          <p>
+            The final packaging solution stands as a testament to what thoughtful reuse can achieve. Each box carries subtle marks of its past life - textures and creases that tell a quiet story of transformation. Yet, when arranged together, the
+            result feels intentional, elegant, and distinctly LOOPECO.
+          </p>
+          <p>
+            This collaboration became more than a packaging redesign; it became a statement of values. LOOPECO’s customers now receive products that embody the brand’s mission - not just through what’s inside, but through the story told by the box
+            itself.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  /*Main*/
+  main {
+    margin-top: 200px;
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  /*Case hero*/
+  .casehero {
+    width: 100%;
+    margin-bottom: 3rem;
+    margin-bottom: 150px;
+  }
+
+  .casehero img {
+    width: 80%;
+    border-radius: 6px;
+    margin-left: 100px;
+    display: block;
+  }
+
+  /*Tekst og billeder*/
+  .textandimg {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .imgandtext {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 130px;
+  }
+
+  .textandimg img {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .imgandtext img {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .text {
+    margin-bottom: 150px;
+  }
+
+  /*De to nederste kolonner*/
+  .col {
+    display: flex;
+    gap: 2rem;
+    margin-top: 40px;
+    margin-bottom: 130px;
+  }
+
+  .col div {
+    flex: 1;
+  }
+</style>
