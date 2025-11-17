@@ -1,0 +1,176 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
+    <title>Forside</title>
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <header>
+        <div class="hero-section">
+          <img src="/src/assets/background.png" alt="Græsmark i sollys" class="background-image" />
+
+          <div class="hero-content">
+            <h1>A house built on stories,<br />identities and impact</h1>
+            <p>TÓKI is a strategic design house for packaging with purpose. We create solutions that carry your product, your story, and your identity - making packaging a silent hero that works across the entire value chain.</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="flowintro">
+        <h2>TÓKI FLOW</h2>
+        <div class="flowtekst">
+          <p>At TÓKI, we work in a flow where insights turn into ideas, and ideas become solutions that create real value for the brand, the customer and the planet.</p>
+          <p>
+            Our approach is built on five paths that together form the core of the TÓKI Flow. Each path can stand on its own, or we can travel through the entire journey as one unified partnership. For us, it’s not just about delivering a project -
+            it’s about creating movement, clarity and results that can truly be felt.
+          </p>
+        </div>
+      </section>
+
+      <section class="flow">
+        <div class="flowcontainer">
+          <div class="flowleft"><div class="circle">Research</div></div>
+          <div class="flowright"><div class="circle">Design</div></div>
+          <div class="flowleft"><div class="circle">Concept</div></div>
+          <div class="flowright"><div class="circle">Execution</div></div>
+          <div class="flowleft"><div class="circle">Partnership</div></div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  /*Main*/
+
+  /*Hero-section*/
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /*Baggrundsbillede*/
+  .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* BAGERST */
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 5%; /*Afstanden fra venstre kant*/
+    transform: translateY(-50%);
+    z-index: 2;
+    color: white;
+    text-align: left; /*Gør at teksten er i venstre side*/
+    max-width: 600px;
+    margin-top: 80px;
+  }
+
+  .hero-content h1 {
+    font-size: 55px;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    color: #fff;
+    font-weight: 500;
+    z-index: 2;
+  }
+
+  .hero-content p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #fffefe;
+    z-index: 2;
+  }
+
+  .flowintro {
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .flowtekst {
+    max-width: 700px;
+    margin: 0 auto; /* Gør at teksten er centreret*/
+    color: #000000;
+    line-height: 2;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif; /*Vi skal skifte skrifttypen*/
+  }
+
+  /*TÓKI FLOW*/
+  .flow {
+    padding: 50px 0 100px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .flowcontainer {
+    width: 700px; /*Gør at man kan styre afstanden mellem cirklerne*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---Cirklerne --- */
+  .circle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2px solid rgba(80, 47, 45, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    background-color: rgba(243, 244, 239, 1);
+    position: relative;
+  }
+
+  .circle::after {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  .circle:hover {
+    border-radius: 1px;
+    width: 230px;
+    height: 150px;
+    background-color: rgba(243, 244, 239, 1);
+    color: #000;
+  }
+
+  /* .circle:hover {
+    font-size: 0;
+  } /*Denne skjuler ord der er inden hover*/
+
+  /* flowleft er de cirkler som er i ventre side, og flowright er de cirkler som er i højre side*/
+  .flowleft {
+    position: relative;
+    margin-bottom: 100px;
+    align-self: flex-start; /*Gør at cirklerne er i venstre side*/
+  }
+
+  .flowright {
+    position: relative;
+    margin-bottom: 100px;
+    align-self: flex-end; /*Gør at cirklerne er i højre side*/
+  }
+</style>
