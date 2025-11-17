@@ -1,0 +1,107 @@
+---
+
+---
+
+<footer class="footer">
+  <div class="footer-left">
+    <a href="/">
+      <img src="/src/assets/logofooter.png" alt="TÓKI logo" class="footer-logo" />
+    </a>
+    <p class="copyright">© Tóki.House. All Right Reserved</p>
+  </div>
+
+  <div class="footer-right">
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <a href="/listview">Contact us</a>
+      <a href="/about">TÓKI Family</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer-column">
+      <h4>Information</h4>
+      <a href="/about">About TÓKI</a>
+      <a href="#">Terms & conditions</a>
+    </div>
+  </div>
+
+  <div class="footer-icons">
+    <a href="#"><img src="/src/assets/mail.png" alt="Mail" /></a>
+    <a href="#"><img src="/src/assets/insta.png" alt="Instagram" /></a>
+    <a href="#"><img src="/src/assets/telefon.png" alt="Phone" /></a>
+  </div>
+</footer>
+
+<style>
+  /*Footer*/
+  .footer {
+    background-color: rgba(19, 38, 17, 1);
+    color: rgba(243, 244, 239, 1);
+    padding: 60px 80px 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .footer-right {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-column h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .footer-column a {
+    color: rgba(243, 244, 239, 1);
+    text-decoration: none;
+  }
+
+  .footer-column a:hover {
+    text-decoration: underline;
+  }
+
+  .divider {
+    width: 1px;
+    height: 140px;
+    background-color: rgba(243, 244, 239, 1);
+  }
+
+  .footer-icons {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+  }
+
+  .footer-icons img {
+    width: 26px;
+    height: 26px;
+  }
+</style>
