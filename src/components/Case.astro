@@ -3,7 +3,7 @@ const { data } = Astro.props;
 ---
 
 <div class="case">
-  <a href="/singleview">
+  <a href={`/singlecases/${data.id}`}>
     <img
       src=`https://fldcgmbbvootvukyqper.supabase.co/storage/v1/object/public/TOKI/${data.image}`
       alt={data.brand_name}

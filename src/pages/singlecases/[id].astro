@@ -1,18 +1,27 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
 import { createClient } from "@supabase/supabase-js";
+export async function getStaticPaths() {
+  const supabase = createClient(
+    "https://fldcgmbbvootvukyqper.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsZGNnbWJidm9vdHZ1a3lxcGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMxMjM5MzYsImV4cCI6MjA3ODY5OTkzNn0.CRlMSRZOMuHecVC7ms2M1ik7nlyAyuq8O861Y7CvFYA"
+  );
 
-const supabase = createClient(
-  "https://fldcgmbbvootvukyqper.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsZGNnbWJidm9vdHZ1a3lxcGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMxMjM5MzYsImV4cCI6MjA3ODY5OTkzNn0.CRlMSRZOMuHecVC7ms2M1ik7nlyAyuq8O861Y7CvFYA"
-);
+  const { data, error } = await supabase.from("Cases").select("*");
+  if (error) {
+    console.error(error);
+    return [];
+  }
 
-const { data, error } = await supabase.from("Cases").select("*");
-
-if (error) {
-  console.error(error);
+  return data.map((post) => ({
+    params: { id: post.id.toString() },
+    props: { post },
+  }));
 }
+
+const { id } = Astro.params;
+const { post } = Astro.props;
 ---
 
 <html lang="en">
@@ -24,23 +33,19 @@ if (error) {
   </head>
   <body>
     <Header />
-
     <main class="casepage">
-      <h2>Our work with LOOPECO.</h2>
-      <div class="casehero"><img src="/src/assets/casehero.png" alt="LOOPECO." /></div>
+      <h2>Our work with {post.brand_name}</h2>
+      <div class="casehero">
+        <img
+          src=`https://fldcgmbbvootvukyqper.supabase.co/storage/v1/object/public/TOKI/${post.image}`
+          alt={post.brand_name}
+        />
+      </div>
 
       <section class="textandimg">
         <div class="text">
           <h3>Introduction</h3>
-          <p>
-            LOOPECO approached TÓKI with a clear goal - to create packaging that would reflect their
-            commitment to sustainable beauty while staying true to their minimalist design
-            philosophy.
-          </p>
-          <p>
-            As a skincare brand built around responsibility and transparency, they wanted their
-            packaging to speak the same language as their products: clean, honest, and conscious.
-          </p>
+          <p>{post.description}</p>
         </div>
         <div class="image">
           <img src="/src/assets/b1.png" alt="LOOPECO bottle" />
@@ -100,7 +105,6 @@ if (error) {
     <Footer />
   </body>
 </html>
-
 <style>
   /*Main*/
   main {
