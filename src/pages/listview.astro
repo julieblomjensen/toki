@@ -1,8 +1,20 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-const endpoint = "https://fldcgmbbvootvukyqper.supabase.co/rest/v1/Cases";
-const key = "apikey: SUPABASE_CLIENT_ANON_KEY";
+import Card from "../components/Case.astro";
+
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://fldcgmbbvootvukyqper.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsZGNnbWJidm9vdHZ1a3lxcGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMxMjM5MzYsImV4cCI6MjA3ODY5OTkzNn0.CRlMSRZOMuHecVC7ms2M1ik7nlyAyuq8O861Y7CvFYA"
+);
+
+const { data, error } = await supabase.from("Cases").select("*");
+
+if (error) {
+  console.error(error);
+}
 ---
 
 <html lang="en">
@@ -18,8 +30,16 @@ const key = "apikey: SUPABASE_CLIENT_ANON_KEY";
     <main>
       <section class="cases">
         <h2>Previous cases</h2>
-        <p class="intro"><strong>From insight to impact, we balance strategy, storytelling, and sustainability <br />to deliver packaging that truly matters.</strong></p>
-        <p>We collaborate with companies that sell physical products. We turn <br />packaging into strategic lever - creating value for business, customers, <br />and planet.</p>
+        <p class="intro">
+          <strong
+            >From insight to impact, we balance strategy, storytelling, and sustainability <br />to
+            deliver packaging that truly matters.</strong
+          >
+        </p>
+        <p>
+          We collaborate with companies that sell physical products. We turn <br />packaging into
+          strategic lever - creating value for business, customers, <br />and planet.
+        </p>
         <p>
           Our clients are decisionmakers within B2B and B2C who want to:<br />
           → Use packaging as a strategic tool<br />
@@ -28,15 +48,10 @@ const key = "apikey: SUPABASE_CLIENT_ANON_KEY";
         </p>
         <p>Get an overview of our previous cases below.</p>
 
-        <div class="casegrid">
-          <div class="case"><a href="/singleview"><img src="/src/assets/case1.png" alt="Case 1" /><span>Simple</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case2.png" alt="Case 2" /><span>Nouri</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case3.png" alt="Case 3" /><span>Beard House</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case4.png" alt="Case 4" /><span>BABA</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case5.png" alt="Case 5" /><span>LOOPECO</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case6.png" alt="Case 6" /><span>Yellow</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case7.png" alt="Case 7" /><span>Newpowa</span></a></div>
-          <div class="case"><a href="/singleview"><img src="/src/assets/case8.png" alt="Case 8" /><span>Tapestry</span></a></div>
+        <div class="cases-container">
+          <div class="casegrid">
+            {data?.map((cases) => <Card key={cases.id} data={cases} />)}
+          </div>
         </div>
       </section>
 
@@ -91,42 +106,45 @@ const key = "apikey: SUPABASE_CLIENT_ANON_KEY";
   }
 
   /*Cases*/
-  .cases {
+  .cases-container {
     margin-top: 3rem;
   }
 
-  .intro {
+  /* heading */
+  .cases-container .intro {
     text-align: left;
     margin-bottom: 1rem;
   }
 
-  .casegrid {
+  /* grid layout */
+  .cases-container .casegrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
     margin-top: 2rem;
   }
 
-  .case {
+  /* cards */
+  .cases-container .case {
     position: relative;
     overflow: hidden;
     border-radius: 6px;
   }
 
-  .case img {
+  .cases-container .case img {
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 4px;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
   }
 
-  .case:hover img {
+  .cases-container .case:hover img {
     transform: scale(1.1);
   }
 
-  .case span {
+  .cases-container .case span {
     position: absolute;
     bottom: 10px;
     left: 10px;

@@ -1,0 +1,44 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="case">
+  <a href="/singleview">
+    <img
+      src=`https://fldcgmbbvootvukyqper.supabase.co/storage/v1/object/public/TOKI/${data.image}`
+      alt={data.brand_name}
+    />
+    <span>{data.brand_name}</span>
+  </a>
+</div>
+
+<style>
+  .case {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .case img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .case:hover img {
+    transform: scale(1.1);
+  }
+
+  .case span {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+</style>
